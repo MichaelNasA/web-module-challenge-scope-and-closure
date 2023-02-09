@@ -64,9 +64,14 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+function inning(){
+    return Math.floor(Math.random() * Math.floor(3));
 }
+
+console.log('Task 2:', inning());
+console.log('Task 2:', inning());
+console.log('Task 2:', inning());
+console.log('Task 2:', inning());
 
 
 /* ⚾️⚾️⚾️ Task 3: finalScore() ⚾️⚾️⚾️
@@ -83,9 +88,21 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*Code Here*/){
-  /*Code Here*/
+function finalScore(inningCallBack, inning){
+  let homeScore = 0;
+  let awayScore = 0;
+
+  for(let i = 0; i < inning; i++){
+    homeScore = homeScore + inningCallBack();
+    awayScore = awayScore + inningCallBack();
+  }
+  return {
+    Home: homeScore,
+    Away: awayScore
+  }
 }
+
+console.log('Task 3:', finalScore(inning, 9));
 
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
@@ -101,11 +118,13 @@ For example: invoking getInningScore(inning) might return this object:
   */
 
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
-
+function getInningScore(inningCallBack) {
+  return{
+    Home: inningCallBack(),
+    Away: inningCallBack()
+  }
 }
-
+console.log(getInningScore(inning));
 
 /* STRETCH: ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
 Use the scoreboard function below to do the following:
